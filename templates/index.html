@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+            background: black;
+        }
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .nav
+        {
+            display: flex;
+            justify-content:space-between;
+
+        }
+
+        .bb{
+            margin-left: 20px;
+            
+        }
+
+        label{
+            
+            color: whitesmoke;
+            font-size:large;
+        }
+        input{
+           
+            color:black;
+            width:300px;
+            border-radius:3px;
+            background-color:grey;
+        }
+        .right-panel{
+            width: 600px;
+            height:700px;
+            background-color:black;
+            margin-top: 20px;
+        }
+        .out{
+            color: rgb(236, 27, 27);
+            color:green;
+            margin-left: 800px;
+            margin-top: -600px;
+            font-weight: bolder;
+            font-size: xx-large;
+            
+        }
+        #pbt{
+            color:whitesmoke;
+            margin-left: 40px;
+            font-size: medium;
+            font-weight: bolder;
+            padding: 3px;
+            border-radius:20px;
+            width: 100px;
+            background-color:  rgb(236, 84, 236);
+        }
+        .logo {
+            font-size: small;
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+
+        .logo span {
+            color: rgb(236, 84, 236);
+            font-size: 50px;
+        }
+
+        #ddd{
+            color: black;
+            background-color:grey;
+
+            
+        }
+        h1{
+            color: whitesmoke;
+        }
+        
+        
+
+
+    </style>
+</head>
+<body><div class="nav">
+    <div class="logo"><h1><span>INTRUSION</span>&nbsp;DETECTION SYSTEM</h1>
+    </div> <br><br>
+   
+</div>
+<div class="right-panel">
+    <form action="{{ url_for('predict')}}" method="post">
+        <!-- Input fields for each feature -->
+<div class="bb">
+        <label for="dst_host_srv_count">Destination Host Service Count:</label><br>
+        <input type="number" id="dst_host_srv_count" name="dst_host_srv_count"></div><br>
+<div class="bb">
+        <label for="src_bytes">Source Bytes:</label><br>
+        <input type="number" id="src_bytes" name="src_bytes"></div><br>
+<div class="bb">
+        <label for="dst_bytes">Destination Bytes:</label><br>
+        <input type="number" id="dst_bytes" name="dst_bytes"></div><br>
+<div class="bb">
+        <label for="count">Connection Count:</label><br>
+        <input type="number" id="count" name="count"></div><br>
+<div class="bb">
+        <label for="srv_count">Server Connection Count:</label><br>
+        <input type="number" id="srv_count" name="srv_count"></div><br>
+<div class="bb">
+        <label for="logged_in">Logged in:</label><br>
+        <input type="number" id="logged_in" name="logged_in"></div><br>
+<div class="bb">
+        <label for="dst_host_diff_srv_rate">Destination Host Different Service Rate</label><br>
+        <input type="number" id="dst_host_diff_srv_rate" name="dst_host_diff_srv_rate"></div><br>
+<div class="bb">
+        <label for="dst_host_same_src_port_rate">Destination Host Same Source Port Rate:
+        </label><br>
+        <input type="number" id="dst_host_same_src_port_rate" name="dst_host_same_src_port_rate"></div><br>
+<div class="bb">
+        <label for="duration">
+            Connection Duration:</label><br>
+        <input type="number" id="duration" name="duration"></div><br>
+<div class="bb">
+        <label for="protocol_type">Protocol_type:</label><br>
+        <select id="protocol_type" name="protocol_type" id="ddd">
+            <option value="0">ICMP</option>
+            <option value="1">TCP</option>
+            <option value="2">UDP</option>
+            <!-- Add more options if needed -->
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" id="pbt">Predict</button><br><br><br></div>
+
+
+
+        
+    </form>
+   
+
+</div>
+
+<div class="out">
+    {{prediction_text}}</div>
+    
+</body>
+</html>
